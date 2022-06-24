@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "181437649523",
+    "project_id": "tasa-de-interes",
+    "storage_bucket": "tasa-de-interes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181437649523:android:c39d6fada656cd1ff89006",
+        "android_client_info": {
+          "package_name": "app.tesis.tasa_interes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181437649523-0qcvmdc0bmuqbneq4mbrj7vldcknnc1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA15W6q1N3bhzyXENNDEHnW8EZOC7Enqhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181437649523-0qcvmdc0bmuqbneq4mbrj7vldcknnc1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
