@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("Pagina Principal"),
+            Text("Pagina Principa"),
             SizedBox(height: 20),
             CupertinoButton(
               color: Colors.blue,
