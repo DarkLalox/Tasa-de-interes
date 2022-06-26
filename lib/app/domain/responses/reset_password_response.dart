@@ -7,6 +7,7 @@ enum ResetPasswordResponse {
   unknown,
 }
 
+// ignore: non_constant_identifier_names
 ResetPasswordResponse StringToResetPasswordResponse(String code) {
   switch (code) {
     case "internal-error":
