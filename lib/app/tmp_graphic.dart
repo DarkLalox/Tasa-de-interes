@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
@@ -21,6 +23,11 @@ class SimpleTimeSeriesChart extends StatelessWidget {
       seriesList,
       animate: animate,
       dateTimeFactory: const charts.LocalDateTimeFactory(),
+      primaryMeasureAxis: charts.NumericAxisSpec(
+        tickProviderSpec: charts.BasicNumericTickProviderSpec(
+          desiredTickCount: 11,
+        ),
+      ),
     );
   }
 

@@ -21,7 +21,9 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 40),
             Center(
               child: SizedBox(
-                  height: 350.0, child: SimpleTimeSeriesChart.withSampleData()),
+                  height: 350.0,
+                  width: 350.0,
+                  child: SimpleTimeSeriesChart.withSampleData()),
             ),
             const SizedBox(height: 100),
             CupertinoButton(
