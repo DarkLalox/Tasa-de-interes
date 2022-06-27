@@ -8,6 +8,7 @@ import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
 import 'package:tasa_interes/app/ui/pages/home/home_controller.dart';
 import 'package:tasa_interes/app/ui/pages/home/tabs/home/home_tab.dart';
 import 'package:tasa_interes/app/ui/pages/home/tabs/profile/profile_tab.dart';
+import 'package:tasa_interes/app/ui/pages/home/widgets/home_tab_bar.dart';
 import 'package:tasa_interes/app/ui/routes/routes.dart';
 import '../../../tmp_graphic.dart';
 
@@ -24,6 +25,7 @@ class HomePage extends StatelessWidget {
       provider: homeProvider,
       builder: (_, controller) {
         return Scaffold(
+          bottomNavigationBar: HomeTabBar(),
           body: SafeArea(
             child: TabBarView(
               controller: controller.tabController,
