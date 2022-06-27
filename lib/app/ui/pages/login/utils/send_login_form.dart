@@ -47,5 +47,11 @@ Future<void> sendLoginForm(BuildContext context) async {
         Routes.HOME,
       );
     }
+  } else {
+    Dialogs.alert(
+      context,
+      title: "ERROR",
+      content: "Campos Inválidos",
+    );
   }
 }

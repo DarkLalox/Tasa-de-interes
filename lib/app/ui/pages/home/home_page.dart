@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:tasa_interes/app/domain/repositories/authentication_repository.dart';
 import 'package:flutter_meedu/router.dart' as router;
+import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
 import 'package:tasa_interes/app/ui/routes/routes.dart';
 import '../../../tmp_graphic.dart';
 
@@ -17,8 +18,15 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Consumer(
+              builder: (_, watch, __) {
+                final user = watch(sessionProvider).user!;
+                List<String> splitName = user.displayName!.split(" ");
+                return Text(splitName.first);
+              },
+            ),
             Text("Gráfico TPM"),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             Center(
               child: SizedBox(
                   height: 350.0,
@@ -30,7 +38,7 @@ class HomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text("Cerrar sesión"),
               onPressed: () async {
-                await Get.i.find<AuthenticationRepository>().signOut();
+                await sessionProvider.read.signOut();
                 router.pushNamedAndRemoveUntil(Routes.LOGIN);
               },
             )

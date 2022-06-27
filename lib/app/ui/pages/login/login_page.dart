@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/router.dart' as router;
 import 'package:flutter_meedu/state.dart';
+//import 'package:flutter_svg/svg.dart';
+import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
 import 'package:tasa_interes/app/ui/global_widgets/custom_input_field.dart';
 import 'package:tasa_interes/app/ui/pages/login/controller/login_controller.dart';
 import 'package:tasa_interes/app/ui/pages/login/utils/send_login_form.dart';
@@ -9,7 +11,7 @@ import 'package:tasa_interes/app/ui/routes/routes.dart';
 import 'package:tasa_interes/app/utils/email.validator.dart';
 
 final loginProvider = SimpleProvider(
-  (_) => LoginController(),
+  (_) => LoginController(sessionProvider.read),
 );
 
 class LoginPage extends StatelessWidget {
@@ -17,6 +19,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //MediaQuery.of(context).size;
+    //MediaQuery.of(context).padding.bottom;
+    //final height =context.height;
     return ProviderListener<LoginController>(
       provider: loginProvider,
       builder: (_, controller) {
@@ -33,6 +38,11 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      //SvgPicture.asset(
+                      //  'assets/images/light/Graphic_Welcome.svg',
+                      //  width: 200,
+                      //),
+                      //const SizedBox(height: 30), cambiar
                       CustomInpudField(
                         label: "Correo electrónico",
                         onChanged: controller.onEmailChanged,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/state.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tasa_interes/app/domain/responses/reset_password_response.dart';
 import 'package:tasa_interes/app/ui/global_widgets/custom_input_field.dart';
 import 'package:tasa_interes/app/ui/global_widgets/dialogs/dialogs.dart';
@@ -31,6 +32,10 @@ class ResetPasswordPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  SvgPicture.asset(
+                    'assets/images/light/ForgetPassword.svg',
+                    width: 200,
+                  ),
                   CustomInpudField(
                     label: "Correo electrónico",
                     onChanged: controller.onEmailChanged,

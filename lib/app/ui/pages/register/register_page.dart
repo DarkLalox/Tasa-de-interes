@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/state.dart';
+import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
 import 'package:tasa_interes/app/ui/global_widgets/custom_input_field.dart';
 import 'package:tasa_interes/app/ui/pages/register/controller/register_controller.dart';
 import 'package:tasa_interes/app/ui/pages/register/controller/register_state.dart';
@@ -10,7 +11,7 @@ import 'package:tasa_interes/app/utils/email.validator.dart';
 import 'package:tasa_interes/app/utils/name_validator.dart';
 
 final registerProvider = StateProvider<RegisterController, RegisterState>(
-  (_) => RegisterController(),
+  (_) => RegisterController(sessionProvider.read),
 );
 
 class RegisterPage extends StatelessWidget {
@@ -44,7 +45,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 15),
                     CustomInpudField(
-                      label: "Nombre Pyme",
+                      label: "Nombre Pyme (Opcional)",
                       onChanged: controller.onNamePymeChanged,
                     ),
                     const SizedBox(height: 15),
