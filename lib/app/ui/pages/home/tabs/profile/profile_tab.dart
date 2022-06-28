@@ -1,14 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/state.dart';
 import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
+import 'package:flutter_meedu/router.dart' as router;
+import 'package:tasa_interes/app/ui/global_widgets/dialogs/dialogs.dart';
+import 'package:tasa_interes/app/ui/global_widgets/dialogs/progress_dialog.dart';
+import 'package:tasa_interes/app/ui/global_widgets/dialogs/show_input_dialog.dart';
+import 'package:tasa_interes/app/ui/routes/routes.dart';
 
 class ProfileTab extends ConsumerWidget {
   const ProfileTab({Key? key}) : super(key: key);
+
+  void _updateDisplayName(BuildContext context) async {
+    final sessionController = sessionProvider.read;
+    final value = await showInputDialog(
+      context,
+      initialValue: sessionController.user!.displayName ?? '',
+    );
+    if (value != null) {
+      ProgressDialog.show(context);
+      final user = await sessionController.updateDisplayName(value);
+      Navigator.pop(context);
+      if (user == null) {
+        Dialogs.alert(
+          context,
+          title: "Error",
+          content: "Verifica tu conexión a internet",
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context, watch) {
     final sessionController = watch(sessionProvider);
     final user = sessionController.user!;
-    List<String> splitName = user.displayName!.split(" ");
+    final displayName = user.displayName ?? '';
+    final letter = displayName.isNotEmpty ? displayName[0] : "";
     return ListView(
       children: [
         const SizedBox(height: 20),
@@ -16,7 +43,7 @@ class ProfileTab extends ConsumerWidget {
           radius: 75,
           child: user.photoURL == null
               ? Text(
-                  user.displayName![0],
+                  letter,
                   style: const TextStyle(fontSize: 65),
                 )
               : null,
@@ -26,7 +53,7 @@ class ProfileTab extends ConsumerWidget {
         const SizedBox(height: 10),
         Center(
             child: Text(
-          splitName.first,
+          displayName,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -37,12 +64,12 @@ class ProfileTab extends ConsumerWidget {
         //const Text("Datos del Usuario"),
         LabelButton(
           label: "Nombre",
-          value: splitName.first,
-          onPressed: () {},
+          value: (displayName),
+          onPressed: () => _updateDisplayName(context),
         ),
         LabelButton(
           label: "Nombre de la PYME",
-          value: splitName.last,
+          value: displayName,
           onPressed: () {},
         ),
         LabelButton(
@@ -54,6 +81,14 @@ class ProfileTab extends ConsumerWidget {
           label: "Correo electrónico verificado",
           value: user.emailVerified ? "YES" : "NO",
           onPressed: () {},
+        ),
+        LabelButton(
+          label: "Cerrar sesión",
+          value: "",
+          onPressed: () async {
+            await sessionProvider.read.signOut();
+            router.pushNamedAndRemoveUntil(Routes.LOGIN);
+          },
         ),
       ],
     );

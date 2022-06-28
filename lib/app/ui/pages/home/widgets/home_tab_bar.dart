@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tasa_interes/app/ui/pages/home/home_controller.dart';
 import 'package:tasa_interes/app/ui/pages/home/home_page.dart';
 
 class HomeTabBar extends StatelessWidget {

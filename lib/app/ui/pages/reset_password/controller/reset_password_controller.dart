@@ -12,6 +12,6 @@ class ResetPasswordController extends SimpleNotifier {
   }
 
   Future<ResetPasswordResponse?> submit() {
-    return _authenticationRepository.sendResetPassordLink(email);
+    return _authenticationRepository.sendResetPasswordLink(email);
   }
 }

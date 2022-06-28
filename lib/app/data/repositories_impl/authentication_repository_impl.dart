@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tasa_interes/app/domain/repositories/authentication_repository.dart';
 import 'package:tasa_interes/app/domain/responses/reset_password_response.dart';
@@ -51,7 +50,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<ResetPasswordResponse> sendResetPassordLink(String email) async {
+  Future<ResetPasswordResponse> sendResetPasswordLink(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
       return ResetPasswordResponse.ok;

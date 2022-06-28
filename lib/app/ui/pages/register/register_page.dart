@@ -47,6 +47,9 @@ class RegisterPage extends StatelessWidget {
                     CustomInpudField(
                       label: "Nombre Pyme (Opcional)",
                       onChanged: controller.onNamePymeChanged,
+                      validator: (text) {
+                        return isValidName(text!) ? null : " Ingresar Pyme";
+                      },
                     ),
                     const SizedBox(height: 15),
                     CustomInpudField(

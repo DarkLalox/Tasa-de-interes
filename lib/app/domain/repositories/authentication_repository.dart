@@ -10,5 +10,5 @@ abstract class AuthenticationRepository {
     String password,
   );
 
-  Future<ResetPasswordResponse?> sendResetPassordLink(String email);
+  Future<ResetPasswordResponse?> sendResetPasswordLink(String email);
 }

@@ -9,13 +9,12 @@ import 'package:flutter_meedu/router.dart' as router;
 Future<void> sendRegisterForm(BuildContext context) async {
   final controller = registerProvider.read;
   final isValidForm = controller.formkey.currentState!.validate();
-
   if (isValidForm) {
     ProgressDialog.show(context);
     final response = await controller.submit();
     router.pop();
+    late String content;
     if (response.error != null) {
-      late String content;
       switch (response.error) {
         case SignUpError.emailAlreadyInUse:
           content = "El correo ya está en uso";

@@ -6,8 +6,8 @@ import 'package:tasa_interes/app/domain/responses/reset_password_response.dart';
 import 'package:tasa_interes/app/ui/global_widgets/custom_input_field.dart';
 import 'package:tasa_interes/app/ui/global_widgets/dialogs/dialogs.dart';
 import 'package:tasa_interes/app/ui/global_widgets/dialogs/progress_dialog.dart';
-import 'package:tasa_interes/app/ui/pages/reset_password/controller/reset_password_controller.dart';
 import 'package:tasa_interes/app/utils/email.validator.dart';
+import 'controller/reset_password_controller.dart';
 
 final resetPasswordProvider = SimpleProvider(
   (_) => ResetPasswordController(),
@@ -32,10 +32,13 @@ class ResetPasswordPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/light/ForgetPassword.svg',
-                    width: 200,
+                  Expanded(
+                    child: SvgPicture.asset(
+                      'assets/images/light/ForgetPassword.svg',
+                      width: 400,
+                    ),
                   ),
+                  const SizedBox(height: 10),
                   CustomInpudField(
                     label: "Correo electrónico",
                     onChanged: controller.onEmailChanged,
@@ -60,6 +63,7 @@ class ResetPasswordPage extends StatelessWidget {
     if (isValidEmail(controller.email)) {
       ProgressDialog.show(context);
       final response = await controller.submit();
+      Navigator.pop(context);
       if (response == ResetPasswordResponse.ok) {
         Dialogs.alert(
           context,
@@ -92,7 +96,6 @@ class ResetPasswordPage extends StatelessWidget {
           content: errorMessage,
         );
       }
-      Navigator.pop(context);
     } else {
       Dialogs.alert(context, content: "Correo electrónico inválido");
     }

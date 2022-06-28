@@ -16,7 +16,7 @@ class SignUpRepositoryImpl implements SignUpRepository {
       await userCredential.user!.updateDisplayName(
         "${data.name} ${data.namepyme}",
       );
-      return SignUpResponse(null, userCredential.user!);
+      return SignUpResponse(null, userCredential.user!); //ver
     } on FirebaseAuthException catch (e) {
       return SignUpResponse(parseStringToSingUpError(e.code), null);
     }

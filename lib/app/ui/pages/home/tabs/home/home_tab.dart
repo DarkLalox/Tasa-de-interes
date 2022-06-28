@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_meedu/state.dart';
-import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
-import 'package:flutter_meedu/router.dart' as router;
-import 'package:tasa_interes/app/ui/routes/routes.dart';
+import '../../../../../tmp_graphic.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -14,21 +11,16 @@ class HomeTab extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Consumer(
-            builder: (_, watch, __) {
-              final user = watch(sessionProvider).user!;
-              List<String> splitName = user.displayName!.split(" ");
-              return Text(splitName.first);
-            },
+          const SizedBox(height: 30),
+          const Text("Gráfico TPM"),
+          const SizedBox(height: 20),
+          Center(
+            child: SizedBox(
+                height: 350.0,
+                width: 350.0,
+                child: SimpleTimeSeriesChart.withSampleData()),
           ),
-          CupertinoButton(
-            color: Colors.blue,
-            child: Text("Cerrar sesión"),
-            onPressed: () async {
-              await sessionProvider.read.signOut();
-              router.pushNamedAndRemoveUntil(Routes.LOGIN);
-            },
-          )
+          const SizedBox(height: 100),
         ],
       ),
     );

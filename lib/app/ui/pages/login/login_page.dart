@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/router.dart' as router;
 import 'package:flutter_meedu/state.dart';
-//import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
 import 'package:tasa_interes/app/ui/global_widgets/custom_input_field.dart';
 import 'package:tasa_interes/app/ui/pages/login/controller/login_controller.dart';
@@ -38,11 +38,12 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      //SvgPicture.asset(
-                      //  'assets/images/light/Graphic_Welcome.svg',
-                      //  width: 200,
-                      //),
-                      //const SizedBox(height: 30), cambiar
+                      Expanded(
+                          child: SvgPicture.asset(
+                        'assets/images/light/Graphic_Welcome.svg',
+                        width: 200,
+                      )),
+                      const SizedBox(height: 10), //Cambiar
                       CustomInpudField(
                         label: "Correo electrónico",
                         onChanged: controller.onEmailChanged,

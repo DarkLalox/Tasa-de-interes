@@ -2,15 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
-//import 'package:tasa_interes/app/domain/repositories/authentication_repository.dart';
-import 'package:flutter_meedu/router.dart' as router;
-import 'package:tasa_interes/app/ui/global_controllers/session_controller.dart';
 import 'package:tasa_interes/app/ui/pages/home/home_controller.dart';
 import 'package:tasa_interes/app/ui/pages/home/tabs/home/home_tab.dart';
 import 'package:tasa_interes/app/ui/pages/home/tabs/profile/profile_tab.dart';
 import 'package:tasa_interes/app/ui/pages/home/widgets/home_tab_bar.dart';
-import 'package:tasa_interes/app/ui/routes/routes.dart';
-import '../../../tmp_graphic.dart';
 
 final homeProvider = SimpleProvider(
   (_) => HomeController(),
